@@ -9,6 +9,9 @@ public class BeeMovementController : MonoBehaviour {
     //rigid body to apply force
     Rigidbody rb;
 
+    //vertical movement
+    float verticalForceValue;
+
     //things for turning
     bool accelerate;
     bool rotateClockwise;
@@ -27,6 +30,7 @@ public class BeeMovementController : MonoBehaviour {
 	void Start () {
         speed = 8f;
         accelerate = false;
+        verticalForceValue = 50;
 
         //initializes rigid body
         rb = GetComponent<Rigidbody>();
@@ -40,7 +44,7 @@ public class BeeMovementController : MonoBehaviour {
         rotateSpeed = 0f;
         maxRotate = 1f;
         rotateRatio = .15f;
-        rotateDrag = .025f;
+        rotateDrag = .05f;
 
         //special abilites
         boostCooldown = 300;
@@ -69,6 +73,15 @@ public class BeeMovementController : MonoBehaviour {
             accelerate = false;
         }
         
+        if (Input.GetKey(KeyCode.U)) 
+        {
+            rb.AddForce(0,verticalForceValue,0);
+        }
+        if (Input.GetKey(KeyCode.I))
+        {
+            rb.AddForce(0,-verticalForceValue,0);
+        }
+
         ////applies a small boost to the player
         if (Input.GetKeyDown(KeyCode.S) && boostTimer == boostCooldown && !lockPlayer)
         {
