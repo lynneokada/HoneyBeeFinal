@@ -1,4 +1,5 @@
 ﻿// SOURCE CODE FROM WARRIOR BUNDLE PACK 3 FREE
+// LockY condition changed to follow player vertically
 
 using UnityEngine;
 
@@ -12,6 +13,7 @@ public class SmoothFollow : MonoBehaviour
 	public bool LockX;
 	public float offSetZ;
 	public bool LockY;
+	public float offSetY;
 	public bool LockZ;
 	public bool useSmoothing;
 	public Transform target;
@@ -79,7 +81,7 @@ public class SmoothFollow : MonoBehaviour
 		
 		if (LockY)
 		{
-			newPos.y = thisTransform.position.y;
+			newPos.y = target.position.y + offSetY;
 		}
 		
 		if (LockZ)

@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\BeeMovementController.cs" />
+     <Compile Include="Assets\Scripts\PollenScript.cs" />
      <Compile Include="Assets\Scripts\SmoothFollow.cs" />
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>/Users/lokada/development/Unity_workspace/HoneyBeeFinal/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
