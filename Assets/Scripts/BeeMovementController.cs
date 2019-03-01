@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BeeMovementController : MonoBehaviour {
     //declares speed and rotation
-    float speed;
+    float speed = 5.0f;
 
     //rigid body to apply force
     Rigidbody rb;
@@ -12,7 +12,7 @@ public class BeeMovementController : MonoBehaviour {
     //vertical movement
     float verticalForceValue;
 
-    //things for turning
+    //properties for rotation
     bool accelerate;
     bool rotateClockwise;
     bool rotateCounterClock;
@@ -28,7 +28,6 @@ public class BeeMovementController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        speed = 8f;
         accelerate = false;
         verticalForceValue = 50;
 
