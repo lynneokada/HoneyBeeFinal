@@ -1,20 +1,33 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerScript : MonoBehaviour
 {
 
-    public float weight;
+    float weight;
     public float pollenValue;
+    public float altitude;
 
+    GameObject bee;
     Rigidbody rb;
+
+    //UI related
+    [SerializeField] Text altitudeText = null;
 
     void Start()
     {
+        bee = this.gameObject;
         rb = GetComponent<Rigidbody>();
         weight = 1.0f;
         pollenValue = 0.0f;
+    }
+
+    void FixedUpdate()
+    {
+        altitude = bee.transform.position.y;
+        altitudeText.text = "Altitude: " + altitude.ToString("F1");
     }
 
     void OnTriggerEnter(Collider col)
