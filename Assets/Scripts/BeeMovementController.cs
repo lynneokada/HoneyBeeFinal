@@ -29,7 +29,7 @@ public class BeeMovementController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         accelerate = false;
-        verticalForceValue = 50;
+        verticalForceValue = 5;
 
         //initializes rigid body
         rb = GetComponent<Rigidbody>();

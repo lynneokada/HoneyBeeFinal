@@ -1,5 +1,6 @@
 ﻿// SOURCE CODE FROM WARRIOR BUNDLE PACK 3 FREE
 // LockY condition changed to follow player vertically
+// Rotation follow target added
 
 using UnityEngine;
 
@@ -18,6 +19,7 @@ public class SmoothFollow : MonoBehaviour
 	public bool useSmoothing;
 	public Transform target;
 	public GameObject hudElements;
+	// public float rotationSpeed;
 	#endregion
 	
 	#region Private Properties
