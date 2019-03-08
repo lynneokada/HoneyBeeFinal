@@ -39,5 +39,15 @@ public class PlayerScript : MonoBehaviour
             rb.mass = weight;
             Destroy(col.gameObject.transform.parent.gameObject);
         }
+
+        if (col.gameObject.tag == "Grass")
+        {
+            Debug.Log("slow down");
+        }
+
+        if (col.gameObject.tag == "Bird")
+        {
+            Debug.Log("BIRB");
+        }
     }
 }

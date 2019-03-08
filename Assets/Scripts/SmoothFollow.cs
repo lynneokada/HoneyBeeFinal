@@ -18,8 +18,6 @@ public class SmoothFollow : MonoBehaviour
 	public bool LockZ;
 	public bool useSmoothing;
 	public Transform target;
-	public GameObject hudElements;
-	// public float rotationSpeed;
 	#endregion
 	
 	#region Private Properties
@@ -37,23 +35,7 @@ public class SmoothFollow : MonoBehaviour
 
 	void Update()
 	{
-		if(hudActive)
-		{
-			if (Input.GetKeyDown(KeyCode.H))
-			{
-				hudElements.SetActive (false);
-				hudActive = false;
-			}
 
-		}
-		else
-		{
-			if (Input.GetKeyDown(KeyCode.H))
-			{
-				hudElements.SetActive (true);
-				hudActive = true;
-			}
-		}
 	}
 
 	// ReSharper disable UnusedMember.Local

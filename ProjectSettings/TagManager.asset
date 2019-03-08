@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Pollen
   - Grass
+  - Bird
   layers:
   - Default
   - TransparentFX
