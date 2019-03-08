@@ -93,5 +93,6 @@ public class SmoothFollow : MonoBehaviour
 		#endregion
 		
 		transform.position = Vector3.Slerp(transform.position, newPos, Time.time);
+		// thisTransform.LookAt(target);
 	}
 }

@@ -40,10 +40,10 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1030659517187645948}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300000, guid: 17d4a1c7cdc27e8438e1885019052918, type: 3}
 --- !u!64 &3615699732793085282
@@ -54,10 +54,10 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1938906728114206644}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300000, guid: c05d2ba70bf51f648b8e3e8b0df6d076, type: 3}
 --- !u!1001 &1030040755174629748
@@ -70,6 +70,10 @@ PrefabInstance:
     - target: {fileID: 1921683292389512, guid: b23c51e7eb8b3ab45b1293fe940b3e76, type: 3}
       propertyPath: m_Name
       value: Grass_0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1921683292389512, guid: b23c51e7eb8b3ab45b1293fe940b3e76, type: 3}
+      propertyPath: m_TagString
+      value: Grass
       objectReference: {fileID: 0}
     - target: {fileID: 4957493137933442, guid: b23c51e7eb8b3ab45b1293fe940b3e76, type: 3}
       propertyPath: m_LocalPosition.x
@@ -147,6 +151,10 @@ PrefabInstance:
     - target: {fileID: 1912611807646744, guid: c93a7c48518112348be8f567a2c3ce69, type: 3}
       propertyPath: m_Name
       value: Grass_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1912611807646744, guid: c93a7c48518112348be8f567a2c3ce69, type: 3}
+      propertyPath: m_TagString
+      value: Grass
       objectReference: {fileID: 0}
     - target: {fileID: 4269565830924886, guid: c93a7c48518112348be8f567a2c3ce69, type: 3}
       propertyPath: m_LocalPosition.x
