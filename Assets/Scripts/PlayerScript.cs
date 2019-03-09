@@ -7,7 +7,7 @@ public class PlayerScript : MonoBehaviour
 {
 
     float weight;
-    public float pollenValue;
+    public float pollenAmount;
     public float altitude;
 
     GameObject player;
@@ -24,7 +24,7 @@ public class PlayerScript : MonoBehaviour
         player = this.gameObject;
         rb = GetComponent<Rigidbody>();
         weight = 1.0f;
-        pollenValue = 0.0f;
+        pollenAmount = 0.0f;
         audioData = GetComponent<AudioSource>();
     }
 
@@ -38,7 +38,7 @@ public class PlayerScript : MonoBehaviour
     {
         if (col.gameObject.tag == "Pollen")
         {
-            pollenValue += 1.0f;  //could add properties to pollen object of different sizes
+            pollenAmount += 1.0f;  //could add properties to pollen object of different sizes
             weight += 0.02f;
             rb.mass = weight;
             Destroy(col.gameObject.transform.parent.gameObject);
@@ -47,6 +47,7 @@ public class PlayerScript : MonoBehaviour
         if (col.gameObject.tag == "Grass")
         {
             player.GetComponent<BeeMovementController>().speed = 3.0f;
+            pollenAmount -= 0.5f;
         }
 
         if (col.gameObject.tag == "Bird")
