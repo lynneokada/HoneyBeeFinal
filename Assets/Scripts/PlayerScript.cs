@@ -10,23 +10,27 @@ public class PlayerScript : MonoBehaviour
     public float pollenValue;
     public float altitude;
 
-    GameObject bee;
+    GameObject player;
     Rigidbody rb;
+
+    AudioSource audioData;
+    public bool swooped = false;
 
     //UI related
     [SerializeField] Text altitudeText = null;
 
     void Start()
     {
-        bee = this.gameObject;
+        player = this.gameObject;
         rb = GetComponent<Rigidbody>();
         weight = 1.0f;
         pollenValue = 0.0f;
+        audioData = GetComponent<AudioSource>();
     }
 
     void FixedUpdate()
     {
-        altitude = bee.transform.position.y;
+        altitude = player.transform.position.y;
         altitudeText.text = "Altitude: " + altitude.ToString("F1");
     }
 
@@ -42,12 +46,31 @@ public class PlayerScript : MonoBehaviour
 
         if (col.gameObject.tag == "Grass")
         {
-            Debug.Log("slow down");
+            player.GetComponent<BeeMovementController>().speed = 3.0f;
         }
 
         if (col.gameObject.tag == "Bird")
         {
-            Debug.Log("BIRB");
+            swoop();
         }
+    }
+
+    void OnTriggerExit(Collider col) 
+    {
+        if (col.gameObject.tag == "Grass")
+        {
+            player.GetComponent<BeeMovementController>().speed = 5.0f;
+        }
+    }
+
+    void swoop()
+    {
+        if (player.CompareTag("Player1"))
+        {
+            player.transform.position = new Vector3(-108, 5, -108);
+        } else if (player.CompareTag("Player2")) {
+            player.transform.position = new Vector3(-108, 5, -108);
+        }
+        audioData.Play(0);
     }
 }

@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 7787333849194099784}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Player
+  m_TagString: Player1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -107,6 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ee18e4ef1bf74dd78457797388c3ffe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 5
 --- !u!54 &8967986429783981516
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -135,3 +136,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 510e78292f41e41ae94645c498d20183, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pollenValue: 0
+  altitude: 0
+  altitudeText: {fileID: 0}

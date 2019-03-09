@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BeeMovementController : MonoBehaviour {
     //declares speed and rotation
-    float speed = 5.0f;
+    public float speed = 5.0f;
 
     //rigid body to apply force
     Rigidbody rb;
