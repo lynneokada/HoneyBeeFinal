@@ -46,7 +46,7 @@ public class PlayerScript : MonoBehaviour
 
         if (col.gameObject.tag == "Grass")
         {
-            player.GetComponent<BeeMovementController>().speed = 3.0f;
+            player.GetComponent<BeeMovementController>().speed = 1.0f;
             pollenAmount -= 0.5f;
         }
 
