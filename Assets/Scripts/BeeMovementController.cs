@@ -72,11 +72,11 @@ public class BeeMovementController : MonoBehaviour {
             accelerate = false;
         }
         
-        if (Input.GetKey(KeyCode.U)) 
+        if (Input.GetKey(KeyCode.Z)) 
         {
             rb.AddForce(0,verticalForceValue,0);
         }
-        if (Input.GetKey(KeyCode.I))
+        if (Input.GetKey(KeyCode.X))
         {
             rb.AddForce(0,-verticalForceValue,0);
         }
@@ -88,21 +88,21 @@ public class BeeMovementController : MonoBehaviour {
             boostTimer = 0;
             rb.AddForce(transform.up * 750);
         }
-        //locks player in place
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            lockPlayer = true;
-        }
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            lockPlayer = false;
-        }
-        if (lockPlayer)
-        {
-            rb.velocity = Vector3.zero;
-            rb.angularVelocity = Vector3.zero;
-            rotateSpeed = 0;
-        }
+        // //locks player in place
+        // if (Input.GetKeyDown(KeyCode.Space))
+        // {
+        //     lockPlayer = true;
+        // }
+        // if (Input.GetKeyUp(KeyCode.Space))
+        // {
+        //     lockPlayer = false;
+        // }
+        // if (lockPlayer)
+        // {
+        //     rb.velocity = Vector3.zero;
+        //     rb.angularVelocity = Vector3.zero;
+        //     rotateSpeed = 0;
+        // }
 
 
         //ROTATION AND TURNING --------------------------------------------------------------------------------------------
