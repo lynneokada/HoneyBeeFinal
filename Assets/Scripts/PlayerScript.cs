@@ -68,7 +68,7 @@ public class PlayerScript : MonoBehaviour
     void swoop()
     {
         player.transform.position = new Vector3(-108, 5, -108);
-        player.pollenAmount -= player.pollenAmount/3;            
+        pollenAmount -= pollenAmount/3;            
         audioData.Play(0);
     }
 }
