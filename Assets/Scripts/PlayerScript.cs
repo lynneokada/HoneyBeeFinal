@@ -47,6 +47,7 @@ public class PlayerScript : MonoBehaviour
         if (col.gameObject.tag == "Grass")
         {
             player.GetComponent<BeeMovementController>().speed = 1.0f;
+            weight -= 0.01f;
             pollenAmount -= 0.5f;
         }
 
@@ -66,12 +67,8 @@ public class PlayerScript : MonoBehaviour
 
     void swoop()
     {
-        if (player.CompareTag("Player1"))
-        {
-            player.transform.position = new Vector3(-108, 5, -108);
-        } else if (player.CompareTag("Player2")) {
-            player.transform.position = new Vector3(-108, 5, -108);
-        }
+        player.transform.position = new Vector3(-108, 5, -108);
+        player.pollenAmount -= player.pollenAmount/3;            
         audioData.Play(0);
     }
 }
