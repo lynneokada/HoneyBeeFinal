@@ -9,6 +9,7 @@ TagManager:
   - Bird
   - Player1
   - Player2
+  - Stone
   layers:
   - Default
   - TransparentFX
