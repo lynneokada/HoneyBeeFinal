@@ -30,8 +30,13 @@ public class PlayerScript : MonoBehaviour
 
     void FixedUpdate()
     {
+        // display player's altitude
         altitude = player.transform.position.y;
         altitudeText.text = "Altitude: " + altitude.ToString("F1");
+
+        // calculate player weight
+        weight = pollenAmount / 10;
+        rb.mass = weight;
     }
 
     void OnTriggerEnter(Collider col)
@@ -39,8 +44,6 @@ public class PlayerScript : MonoBehaviour
         if (col.gameObject.tag == "Pollen")
         {
             pollenAmount += 1.0f;  //could add properties to pollen object of different sizes
-            weight += 0.02f;
-            rb.mass = weight;
             Destroy(col.gameObject.transform.parent.gameObject);
         }
 
@@ -63,6 +66,16 @@ public class PlayerScript : MonoBehaviour
         {
             player.GetComponent<BeeMovementController>().speed = 5.0f;
         }
+    }
+
+    void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.tag == "Stone")
+        {
+            Debug.Log("hit");   
+        }
+
+        rb.freezeRotation = true;
     }
 
     void swoop()
