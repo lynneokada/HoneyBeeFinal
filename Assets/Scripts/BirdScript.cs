@@ -10,6 +10,7 @@ public class BirdScript : MonoBehaviour
     Vector3[] positionArray = new [] { new Vector3(400f,50f,0f), new Vector3(-400f,50f,1f), new Vector3(0f,50f,400f), new Vector3(0f,50f,-400f) }; //east, west, north, south
     Direction direction;
     float triggerHeight = 9.0f;
+    bool hawkSoundPlayed = false;
 
     enum Direction {
         north,
@@ -31,6 +32,12 @@ public class BirdScript : MonoBehaviour
         if (player.transform.position.y >= triggerHeight)
         {
             speed = 200;
+            if (!hawkSoundPlayed)
+            {
+                player.GetComponent<PlayerAudioScript>().PlayHawkScreechSound();
+                hawkSoundPlayed = true;
+            }
+            
             if (direction == Direction.none)
             {
                 if (transform.position == positionArray[0])
@@ -50,6 +57,7 @@ public class BirdScript : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, player.transform.position, step);
         } else {
             speed = 150;
+            hawkSoundPlayed = false;
             float step =  speed * Time.deltaTime; // calculate distance to move
             
             switch(direction)

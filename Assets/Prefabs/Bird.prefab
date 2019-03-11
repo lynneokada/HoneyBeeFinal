@@ -440,7 +440,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  speed: 200
 --- !u!65 &763126737862562399
 BoxCollider:
   m_ObjectHideFlags: 0

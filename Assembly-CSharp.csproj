@@ -56,6 +56,7 @@
      <Compile Include="Assets\Scripts\Bee2MovementController.cs" />
      <Compile Include="Assets\Scripts\BeeMovementController.cs" />
      <Compile Include="Assets\Scripts\BirdScript.cs" />
+     <Compile Include="Assets\Scripts\PlayerAudioScript.cs" />
      <Compile Include="Assets\Scripts\PlayerScript.cs" />
      <Compile Include="Assets\Scripts\PollenScript.cs" />
      <Compile Include="Assets\Scripts\SmoothFollow.cs" />
