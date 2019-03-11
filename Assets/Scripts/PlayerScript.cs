@@ -22,6 +22,9 @@ public class PlayerScript : MonoBehaviour
 
     AudioSource audioData;
     public bool swooped = false;
+    float rotationSpeed = 15f;
+    float spinTime = 100;
+    float spinTimer = 100;
 
     //UI related
     [SerializeField] Text altitudeText = null;
@@ -41,9 +44,16 @@ public class PlayerScript : MonoBehaviour
         altitude = player.transform.position.y;
         altitudeText.text = "Altitude: " + altitude.ToString("F1");
 
-        // calculate player weight
-        // weight = pollenAmount / 10;
-        // rb.mass = weight;
+        if (spinTimer < spinTime)
+        {
+            player.GetComponent<Collider>().isTrigger = true;
+            player.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            player.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+            player.transform.Rotate(rotationSpeed, 0, 0, Space.Self);
+            spinTimer++;
+        } else {
+            player.GetComponent<Collider>().isTrigger = false;
+        }
     }
 
     void OnTriggerEnter(Collider col)
@@ -87,18 +97,6 @@ public class PlayerScript : MonoBehaviour
                 Debug.Log("win");
             }
         }
-
-        if (col.gameObject.tag == "Player1" || col.gameObject.tag == "Player2")
-        {
-            Debug.Log(col.gameObject.GetComponent<PlayerScript>().rb.velocity.magnitude);
-            Debug.Log(rb.velocity.magnitude);
-            if (col.gameObject.GetComponent<PlayerScript>().rb.velocity.magnitude > rb.velocity.magnitude)
-            {
-                rb.AddForce(0,-verticalForceValue,0);
-            } else {
-                col.gameObject.GetComponent<PlayerScript>().rb.AddForce(0,verticalForceValue,0);
-            }
-        }
     }
 
     void OnTriggerExit(Collider col) 
@@ -113,6 +111,16 @@ public class PlayerScript : MonoBehaviour
     {
         pollenAmount -= 1.0f;
         rb.freezeRotation = true;
+
+        if (col.gameObject.tag == "Player1" || col.gameObject.tag == "Player2")
+        {
+            if (col.gameObject.GetComponent<PlayerScript>().rb.velocity.magnitude > rb.velocity.magnitude)
+            {
+                spinTimer = 0;
+            } else {
+                col.gameObject.GetComponent<PlayerScript>().spinTimer = 0; 
+            }
+        }
     }
 
     void swoop()
