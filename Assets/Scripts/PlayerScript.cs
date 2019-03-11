@@ -87,6 +87,18 @@ public class PlayerScript : MonoBehaviour
                 Debug.Log("win");
             }
         }
+
+        if (col.gameObject.tag == "Player1" || col.gameObject.tag == "Player2")
+        {
+            Debug.Log(col.gameObject.GetComponent<PlayerScript>().rb.velocity.magnitude);
+            Debug.Log(rb.velocity.magnitude);
+            if (col.gameObject.GetComponent<PlayerScript>().rb.velocity.magnitude > rb.velocity.magnitude)
+            {
+                rb.AddForce(0,-verticalForceValue,0);
+            } else {
+                col.gameObject.GetComponent<PlayerScript>().rb.AddForce(0,verticalForceValue,0);
+            }
+        }
     }
 
     void OnTriggerExit(Collider col) 
@@ -101,16 +113,6 @@ public class PlayerScript : MonoBehaviour
     {
         pollenAmount -= 1.0f;
         rb.freezeRotation = true;
-
-        if (col.gameObject.tag == "Player1" || col.gameObject.tag == "Player2")
-        {
-            Debug.Log(col.gameObject.GetComponent<PlayerScript>().rb.velocity.magnitude);
-            Debug.Log(rb.velocity.magnitude);
-            if (col.gameObject.GetComponent<PlayerScript>().rb.velocity.magnitude > rb.velocity.magnitude)
-            {
-                rb.AddForce(0,-verticalForceValue,0);
-            }
-        }
     }
 
     void swoop()

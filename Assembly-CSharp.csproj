@@ -53,7 +53,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Bee2MovementController.cs" />
      <Compile Include="Assets\Scripts\BeeMovementController.cs" />
      <Compile Include="Assets\Scripts\BirdScript.cs" />
      <Compile Include="Assets\Scripts\PlayerAudioScript.cs" />
