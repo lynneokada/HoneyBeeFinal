@@ -9,6 +9,7 @@ public class BirdScript : MonoBehaviour
     float speed;
     Vector3[] positionArray = new [] { new Vector3(400f,50f,0f), new Vector3(-400f,50f,1f), new Vector3(0f,50f,400f), new Vector3(0f,50f,-400f) }; //east, west, north, south
     Direction direction;
+    float triggerHeight = 9.0f;
 
     enum Direction {
         north,
@@ -27,7 +28,7 @@ public class BirdScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player.transform.position.y >= 10.0f)
+        if (player.transform.position.y >= triggerHeight)
         {
             speed = 200;
             if (direction == Direction.none)

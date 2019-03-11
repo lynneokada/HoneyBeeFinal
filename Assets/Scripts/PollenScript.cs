@@ -21,7 +21,7 @@ public class PollenScript : MonoBehaviour
 
     void OnTriggerStay(Collider col)
     {
-        if (col.gameObject.tag == "Player")
+        if (col.gameObject.tag == "Player1" || col.gameObject.tag == "Player2")
         {
             pollen.transform.position = Vector3.MoveTowards(pollen.transform.position, col.gameObject.transform.position, 0.1f);
         }

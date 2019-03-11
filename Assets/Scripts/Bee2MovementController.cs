@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bee2MovementController : MonoBehaviour {
     //declares speed and rotation
     public float speed = 5.0f;
+    float bSpeed = 2.0f;
 
     //rigid body to apply force
     Rigidbody rb;
@@ -13,7 +14,6 @@ public class Bee2MovementController : MonoBehaviour {
     float verticalForceValue;
 
     //properties for rotation
-    bool accelerate;
     bool rotateClockwise;
     bool rotateCounterClock;
     float rotateSpeed;
@@ -27,8 +27,7 @@ public class Bee2MovementController : MonoBehaviour {
     bool lockPlayer;
 
 	// Use this for initialization
-	void Start () {
-        accelerate = false;
+	void Start () {        
         verticalForceValue = 5;
 
         //initializes rigid body
@@ -63,16 +62,16 @@ public class Bee2MovementController : MonoBehaviour {
         //Debug.Log(transform.localRotation.x);
         //MOVEMENT AND MOMENTUM----------------------------------------------------------------------------------------
         //If the W key is being held down
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.UpArrow))
         {
-            accelerate = true;
+            rb.AddForce(transform.up * speed);
         }
-        if (Input.GetKeyUp(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.DownArrow))
         {
-            accelerate = false;
+            rb.AddForce(-transform.up * bSpeed);
         }
         
-        if (Input.GetKey(KeyCode.N)) 
+        if (Input.GetKey(KeyCode.B)) 
         {
             rb.AddForce(0,verticalForceValue,0);
         }
@@ -82,9 +81,8 @@ public class Bee2MovementController : MonoBehaviour {
         }
 
         ////applies a small boost to the player
-        if (Input.GetKeyDown(KeyCode.DownArrow) && boostTimer == boostCooldown && !lockPlayer)
+        if (Input.GetKeyDown(KeyCode.N) && boostTimer == boostCooldown && !lockPlayer)
         {
-            
             boostTimer = 0;
             rb.AddForce(transform.up * 750);
         }
@@ -139,13 +137,10 @@ public class Bee2MovementController : MonoBehaviour {
     private void FixedUpdate()
     {
         if (boostTimer < boostCooldown)
-            boostTimer++;
-        //move object
-        if (accelerate && !lockPlayer)
         {
-            //Debug.Log(Time.deltaTime);
-            rb.AddForce(transform.up * speed);
+            boostTimer++;
         }
+
         if (rotateClockwise && rotateSpeed < maxRotate && !lockPlayer)
         {
             rotateSpeed += rotateRatio;

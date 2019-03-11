@@ -5,6 +5,7 @@ using UnityEngine;
 public class BeeMovementController : MonoBehaviour {
     //declares speed and rotation
     public float speed = 5.0f;
+    float bSpeed = 2.0f;
 
     //rigid body to apply force
     Rigidbody rb;
@@ -13,7 +14,6 @@ public class BeeMovementController : MonoBehaviour {
     float verticalForceValue;
 
     //properties for rotation
-    bool accelerate;
     bool rotateClockwise;
     bool rotateCounterClock;
     float rotateSpeed;
@@ -28,7 +28,6 @@ public class BeeMovementController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        accelerate = false;
         verticalForceValue = 5;
 
         //initializes rigid body
@@ -63,28 +62,27 @@ public class BeeMovementController : MonoBehaviour {
         //Debug.Log(transform.localRotation.x);
         //MOVEMENT AND MOMENTUM----------------------------------------------------------------------------------------
         //If the W key is being held down
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKey(KeyCode.W))
         {
-            accelerate = true;
+            rb.AddForce(transform.up * speed);
         }
-        if (Input.GetKeyUp(KeyCode.W))
+        if (Input.GetKey(KeyCode.S))
         {
-            accelerate = false;
+            rb.AddForce(-transform.up * bSpeed);
         }
         
         if (Input.GetKey(KeyCode.Z)) 
         {
             rb.AddForce(0,verticalForceValue,0);
         }
-        if (Input.GetKey(KeyCode.X))
+        if (Input.GetKey(KeyCode.C))
         {
             rb.AddForce(0,-verticalForceValue,0);
         }
 
         ////applies a small boost to the player
-        if (Input.GetKeyDown(KeyCode.S) && boostTimer == boostCooldown && !lockPlayer)
+        if (Input.GetKeyDown(KeyCode.X) && boostTimer == boostCooldown && !lockPlayer)
         {
-            
             boostTimer = 0;
             rb.AddForce(transform.up * 750);
         }
@@ -139,13 +137,10 @@ public class BeeMovementController : MonoBehaviour {
     private void FixedUpdate()
     {
         if (boostTimer < boostCooldown)
-            boostTimer++;
-        //move object
-        if (accelerate && !lockPlayer)
         {
-            //Debug.Log(Time.deltaTime);
-            rb.AddForce(transform.up * speed);
+            boostTimer++;
         }
+
         if (rotateClockwise && rotateSpeed < maxRotate && !lockPlayer)
         {
             rotateSpeed += rotateRatio;
