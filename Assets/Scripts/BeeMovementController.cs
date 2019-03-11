@@ -26,6 +26,15 @@ public class BeeMovementController : MonoBehaviour {
     int boostTimer;
     bool lockPlayer;
 
+    //controls
+    KeyCode forward;
+    KeyCode backward;
+    KeyCode leftRotate;
+    KeyCode rightRotate;
+    KeyCode up;
+    KeyCode down;
+    KeyCode boost;
+
 	// Use this for initialization
 	void Start () {
         verticalForceValue = 5;
@@ -48,40 +57,55 @@ public class BeeMovementController : MonoBehaviour {
         boostCooldown = 300;
         boostTimer = 300;
         lockPlayer = false;
+
+        if (gameObject.tag == "Player1")
+        {
+            forward = KeyCode.W;
+            backward = KeyCode.S;
+            leftRotate = KeyCode.A;
+            rightRotate = KeyCode.D;
+            up = KeyCode.Z;
+            down = KeyCode.C;
+            boost = KeyCode.X;
+        } else if (gameObject.tag == "Player2") {
+            forward = KeyCode.P;
+            backward = KeyCode.Semicolon;
+            leftRotate = KeyCode.L;
+            rightRotate = KeyCode.Quote;
+            up = KeyCode.Comma;
+            down = KeyCode.Slash;
+            boost = KeyCode.Period;
+        }
 	}
 	
-	// Update is called once per frame
 	void Update () {
-        //if the player become axis misaligned rotate them back
-        //if the player become axis misaligned rotate them back
+
+
         if (transform.localRotation.eulerAngles.x > 1f || transform.localRotation.eulerAngles.x < -1f || transform.localRotation.eulerAngles.z > 91f || transform.localRotation.eulerAngles.z < 89f)
         {
-            //Debug.Log("Axis misaligned");
             transform.rotation = Quaternion.Euler(0, transform.localRotation.eulerAngles.y, 90);
         }
-        //Debug.Log(transform.localRotation.x);
-        //MOVEMENT AND MOMENTUM----------------------------------------------------------------------------------------
-        //If the W key is being held down
-        if (Input.GetKey(KeyCode.W))
+
+        if (Input.GetKey(forward))
         {
             rb.AddForce(transform.up * speed);
         }
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(backward))
         {
             rb.AddForce(-transform.up * bSpeed);
         }
         
-        if (Input.GetKey(KeyCode.Z)) 
+        if (Input.GetKey(down)) 
         {
             rb.AddForce(0,verticalForceValue,0);
         }
-        if (Input.GetKey(KeyCode.C))
+        if (Input.GetKey(up))
         {
             rb.AddForce(0,-verticalForceValue,0);
         }
 
-        ////applies a small boost to the player
-        if (Input.GetKeyDown(KeyCode.X) && boostTimer == boostCooldown && !lockPlayer)
+        ///nitro but also attack
+        if (Input.GetKeyDown(boost) && boostTimer == boostCooldown && !lockPlayer)
         {
             boostTimer = 0;
             rb.AddForce(transform.up * 750);
@@ -102,29 +126,25 @@ public class BeeMovementController : MonoBehaviour {
         //     rotateSpeed = 0;
         // }
 
-
-        //ROTATION AND TURNING --------------------------------------------------------------------------------------------
-        //if A is held down then rotate to the right(clockwise)
-        if (Input.GetKeyDown(KeyCode.D))
+        //clockwise rotation
+        if (Input.GetKeyDown(rightRotate))
         {
             rotateClockwise = true;
         }
-        if (Input.GetKeyUp(KeyCode.D))
+        if (Input.GetKeyUp(rightRotate))
         {
             rotateClockwise = false;
         }
         
-
-        //if D is held down then rotate to the left(counter clockwise)
-        if (Input.GetKeyDown(KeyCode.A))
+        //counter clockwise rotation
+        if (Input.GetKeyDown(leftRotate))
         {
             rotateCounterClock = true;
         }
-        if (Input.GetKeyUp(KeyCode.A))
+        if (Input.GetKeyUp(leftRotate))
         {
             rotateCounterClock = false;
         }
-        
 
         //slowly decelerate rotation over time
         if (rotateSpeed < 0)

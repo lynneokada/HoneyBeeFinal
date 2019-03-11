@@ -9,7 +9,7 @@ public class BirdScript : MonoBehaviour
     float speed;
     Vector3[] positionArray = new [] { new Vector3(400f,50f,0f), new Vector3(-400f,50f,1f), new Vector3(0f,50f,400f), new Vector3(0f,50f,-400f) }; //east, west, north, south
     Direction direction;
-    float triggerHeight = 9.0f;
+    float triggerHeight = 8.0f;
     bool hawkSoundPlayed = false;
 
     enum Direction {
@@ -36,6 +36,7 @@ public class BirdScript : MonoBehaviour
             {
                 player.GetComponent<PlayerAudioScript>().PlayHawkScreechSound();
                 hawkSoundPlayed = true;
+                gameObject.transform.LookAt(player.transform.position);
             }
             
             if (direction == Direction.none)

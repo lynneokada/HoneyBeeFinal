@@ -59,9 +59,7 @@ public class Bee2MovementController : MonoBehaviour {
             //Debug.Log("Axis misaligned");
             transform.rotation = Quaternion.Euler(0, transform.localRotation.eulerAngles.y, 90);
         }
-        //Debug.Log(transform.localRotation.x);
-        //MOVEMENT AND MOMENTUM----------------------------------------------------------------------------------------
-        //If the W key is being held down
+
         if (Input.GetKey(KeyCode.UpArrow))
         {
             rb.AddForce(transform.up * speed);
