@@ -28,6 +28,7 @@ public class PlayerScript : MonoBehaviour
 
     //UI related
     [SerializeField] Text altitudeText = null;
+    [SerializeField] Text pollenAmountText = null;
 
     void Start()
     {
@@ -62,6 +63,7 @@ public class PlayerScript : MonoBehaviour
         {
             pollenAmount += 1.0f;  //could add properties to pollen object of different sizes
             Destroy(col.gameObject.transform.parent.gameObject);
+            pollenAmountText.text = "Pollen Amount: " + pollenAmount.ToString("F0");
         }
 
         if (col.gameObject.tag == "Grass")
