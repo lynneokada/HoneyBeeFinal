@@ -59,6 +59,7 @@
      <Compile Include="Assets\Scripts\PlayerScript.cs" />
      <Compile Include="Assets\Scripts\PollenScript.cs" />
      <Compile Include="Assets\Scripts\SmoothFollow.cs" />
+     <Compile Include="Assets\Scripts\WinStateScript.cs" />
      <None Include="Assets\BrokenVector\FreeLowPolyPack\readme.txt" />
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>/Users/lokada/development/Unity_workspace/HoneyBeeFinal/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>

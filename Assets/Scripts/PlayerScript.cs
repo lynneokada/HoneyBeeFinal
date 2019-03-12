@@ -96,7 +96,7 @@ public class PlayerScript : MonoBehaviour
         {
             if (c1 == true && c2 == true && c3 == true)
             {
-                Debug.Log("win");
+                Debug.Log("completed race");
             }
         }
     }
