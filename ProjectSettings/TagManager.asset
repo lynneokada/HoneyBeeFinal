@@ -14,6 +14,8 @@ TagManager:
   - Checkpoint2
   - Checkpoint3
   - FinishLine
+  - Player1Ring
+  - Player2Ring
   layers:
   - Default
   - TransparentFX

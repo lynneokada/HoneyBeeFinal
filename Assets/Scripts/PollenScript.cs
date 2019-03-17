@@ -6,24 +6,21 @@ public class PollenScript : MonoBehaviour
 {
 
     GameObject pollen;
+    public bool didExit = false;
+    public GameObject player;
 
     // Start is called before the first frame update
     void Start()
     {
         pollen = this.gameObject;
+        // player = null;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
-    }
-
-    void OnTriggerStay(Collider col)
-    {
-        if (col.gameObject.tag == "Player1" || col.gameObject.tag == "Player2")
+        if (didExit == true)
         {
-            pollen.transform.position = Vector3.MoveTowards(pollen.transform.position, col.gameObject.transform.position, 0.1f);
+            pollen.transform.position = Vector3.MoveTowards(pollen.transform.position, player.transform.position, 0.5f);
         }
     }
 }

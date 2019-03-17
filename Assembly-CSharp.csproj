@@ -57,6 +57,7 @@
      <Compile Include="Assets\Scripts\BirdScript.cs" />
      <Compile Include="Assets\Scripts\PlayerAudioScript.cs" />
      <Compile Include="Assets\Scripts\PlayerScript.cs" />
+     <Compile Include="Assets\Scripts\PollenRingScript.cs" />
      <Compile Include="Assets\Scripts\PollenScript.cs" />
      <Compile Include="Assets\Scripts\SmoothFollow.cs" />
      <Compile Include="Assets\Scripts\WinStateScript.cs" />

@@ -61,10 +61,14 @@ public class PlayerScript : MonoBehaviour
     {
         if (col.gameObject.tag == "Pollen")
         {
-            pollenAmount += 1.0f;  //could add properties to pollen object of different sizes
-            Destroy(col.gameObject.transform.parent.gameObject);
-            pollenAmountText.text = "Pollen Amount: " + pollenAmount.ToString("F0");
+            if (col.gameObject.GetComponent<PollenScript>().didExit == true)
+            {
+                pollenAmount += 1.0f;  //could add properties to pollen object of different sizes
+                Destroy(col.gameObject.transform.parent.gameObject);
+                pollenAmountText.text = "Pollen Amount: " + pollenAmount.ToString("F0");
+            }
         }
+            
 
         if (col.gameObject.tag == "Grass")
         {
