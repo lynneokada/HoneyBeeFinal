@@ -60,6 +60,7 @@ public class PlayerScript : MonoBehaviour
         {
             if (col.gameObject.GetComponent<PollenScript>().didExit == true)
             {
+                GetComponent<PlayerAudioScript>().PollenSound();
                 pollenAmount += 1.0f;  //could add properties to pollen object of different sizes
                 Destroy(col.gameObject.transform.parent.gameObject);
             }

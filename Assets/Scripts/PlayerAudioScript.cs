@@ -10,6 +10,7 @@ public class PlayerAudioScript : MonoBehaviour
     public AudioSource boostSound;
     public AudioSource playerHitSound;
     public AudioSource grassHitSound;
+    public AudioSource pollenSound;
 
     public void PlayQuickFartSound()
     {
@@ -38,5 +39,10 @@ public class PlayerAudioScript : MonoBehaviour
     public void GrassHitSound()
     {
         grassHitSound.Play();
+    }
+
+    public void PollenSound()
+    {
+        pollenSound.Play();
     }
 }
