@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class PlayerScript : MonoBehaviour
 {
 
-    float weight;
     public float pollenAmount;
     public float altitude;
 
@@ -28,13 +27,11 @@ public class PlayerScript : MonoBehaviour
 
     //UI related
     [SerializeField] Text altitudeText = null;
-    [SerializeField] Text pollenAmountText = null;
 
     void Start()
     {
         player = this.gameObject;
         rb = GetComponent<Rigidbody>();
-        weight = 1.0f;
         pollenAmount = 0.0f;
         audioData = GetComponent<AudioSource>();
     }
@@ -65,11 +62,13 @@ public class PlayerScript : MonoBehaviour
             {
                 pollenAmount += 1.0f;  //could add properties to pollen object of different sizes
                 Destroy(col.gameObject.transform.parent.gameObject);
-                pollenAmountText.text = "Pollen Amount: " + pollenAmount.ToString("F0");
             }
         }
             
-
+        if (col.gameObject.tag == "Stone" || col.gameObject.tag == "Stick" || col.gameObject.tag == "Tree")
+        {
+            GetComponent<PlayerAudioScript>().PlayHardCollisionSound();
+        }
         if (col.gameObject.tag == "Grass")
         {
             player.GetComponent<BeeMovementController>().speed = 1.0f;

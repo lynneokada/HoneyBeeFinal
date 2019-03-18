@@ -16,6 +16,8 @@ TagManager:
   - FinishLine
   - Player1Ring
   - Player2Ring
+  - Stick
+  - Tree
   layers:
   - Default
   - TransparentFX

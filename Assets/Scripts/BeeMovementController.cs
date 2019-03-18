@@ -108,6 +108,7 @@ public class BeeMovementController : MonoBehaviour {
         if (Input.GetKeyDown(boost) && boostTimer == boostCooldown && !lockPlayer)
         {
             boostTimer = 0;
+            GetComponent<PlayerAudioScript>().PlayBoostSound();
             rb.AddForce(transform.up * 250);
         }
         // //locks player in place

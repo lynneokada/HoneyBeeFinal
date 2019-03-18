@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8772472884035531832}
   m_Layer: 0
   m_Name: Pollen
-  m_TagString: Untagged
+  m_TagString: Pollen
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -91,6 +91,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87d6ca1d134b24c6b9be666114d02592, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  didExit: 0
+  player: {fileID: 0}
 --- !u!1 &8772472885350977425
 GameObject:
   m_ObjectHideFlags: 0

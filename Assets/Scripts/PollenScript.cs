@@ -13,7 +13,6 @@ public class PollenScript : MonoBehaviour
     void Start()
     {
         pollen = this.gameObject;
-        // player = null;
     }
 
     void Update()
