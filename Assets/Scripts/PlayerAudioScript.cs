@@ -8,6 +8,8 @@ public class PlayerAudioScript : MonoBehaviour
     public AudioSource hawkScreechSound;
     public AudioSource hardCollisionSound;
     public AudioSource boostSound;
+    public AudioSource playerHitSound;
+    public AudioSource grassHitSound;
 
     public void PlayQuickFartSound()
     {
@@ -26,5 +28,15 @@ public class PlayerAudioScript : MonoBehaviour
     public void PlayBoostSound()
     {
         boostSound.Play();
+    }
+
+    public void PlayerHitSound()
+    {
+        playerHitSound.Play();
+    }
+
+    public void GrassHitSound()
+    {
+        grassHitSound.Play();
     }
 }

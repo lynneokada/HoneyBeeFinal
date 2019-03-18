@@ -64,14 +64,11 @@ public class PlayerScript : MonoBehaviour
                 Destroy(col.gameObject.transform.parent.gameObject);
             }
         }
-            
-        if (col.gameObject.tag == "Stone" || col.gameObject.tag == "Stick" || col.gameObject.tag == "Tree")
-        {
-            GetComponent<PlayerAudioScript>().PlayHardCollisionSound();
-        }
+
         if (col.gameObject.tag == "Grass")
         {
             player.GetComponent<BeeMovementController>().speed = 1.0f;
+            GetComponent<PlayerAudioScript>().GrassHitSound();
             pollenAmount -= 0.5f;
         }
 
@@ -119,12 +116,18 @@ public class PlayerScript : MonoBehaviour
 
         if (col.gameObject.tag == "Player1" || col.gameObject.tag == "Player2")
         {
+            GetComponent<PlayerAudioScript>().PlayerHitSound();
             if (col.gameObject.GetComponent<PlayerScript>().rb.velocity.magnitude > rb.velocity.magnitude)
             {
                 spinTimer = 0;
             } else {
                 col.gameObject.GetComponent<PlayerScript>().spinTimer = 0; 
             }
+        }
+
+        if (col.gameObject.tag == "Stone" || col.gameObject.tag == "Stick" || col.gameObject.tag == "Tree")
+        {
+            GetComponent<PlayerAudioScript>().PlayHardCollisionSound();
         }
     }
 
