@@ -22,8 +22,6 @@ public class WinStateScript : MonoBehaviour
 
                 p2WinStateText.text = "Loser...";
                 p2WinStateText.gameObject.SetActive(true);
-            } else if (col.gameObject.tag == "Player1" && string.Compare(winner,"") != 0) {
-                
             }
 
             if (col.gameObject.tag == "Player2" && string.Compare(winner,"") == 0)
