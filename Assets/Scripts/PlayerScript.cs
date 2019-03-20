@@ -27,6 +27,7 @@ public class PlayerScript : MonoBehaviour
 
     //UI related
     [SerializeField] Text altitudeText = null;
+    [SerializeField] Text pollenText = null;
 
     void Start()
     {
@@ -41,6 +42,7 @@ public class PlayerScript : MonoBehaviour
         // display player's altitude
         altitude = player.transform.position.y;
         altitudeText.text = "Altitude: " + altitude.ToString("F1");
+        pollenText.text = pollenAmount.ToString("F0") + " / 38";
 
         if (spinTimer < spinTime)
         {
@@ -58,19 +60,13 @@ public class PlayerScript : MonoBehaviour
     {
         if (col.gameObject.tag == "Pollen")
         {
-            if (col.gameObject.GetComponent<PollenScript>().didExit == true)
-            {
-                GetComponent<PlayerAudioScript>().PollenSound();
-                pollenAmount += 1.0f;  //could add properties to pollen object of different sizes
-                Destroy(col.gameObject.transform.parent.gameObject);
-            }
+            GetComponent<PlayerAudioScript>().PollenSound();
         }
 
         if (col.gameObject.tag == "Grass")
         {
             player.GetComponent<BeeMovementController>().speed = 1.0f;
             GetComponent<PlayerAudioScript>().GrassHitSound();
-            pollenAmount -= 0.5f;
         }
 
         if (col.gameObject.tag == "Bird")
@@ -95,7 +91,7 @@ public class PlayerScript : MonoBehaviour
         }
         if (col.gameObject.tag == "FinishLine")
         {
-            if (c1 == true && c2 == true && c3 == true)
+            if (c1 == true && c2 == true && c3 == true && pollenAmount == 38.0f)
             {
                 Debug.Log("completed race");
             }
@@ -108,11 +104,16 @@ public class PlayerScript : MonoBehaviour
         {
             player.GetComponent<BeeMovementController>().speed = 5.0f;
         }
+
+        if (col.gameObject.tag == "Pollen")
+        {
+         
+            Destroy(col.gameObject);
+        }
     }
 
     void OnCollisionEnter(Collision col)
     {
-        pollenAmount -= 1.0f;
         rb.freezeRotation = true;
 
         if (col.gameObject.tag == "Player1" || col.gameObject.tag == "Player2")

@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/B&J Studio/Scenes/Example.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
+    path: Assets/Scenes/MenuScene.unity
+    guid: 834232336b42f4706a62d0d2acb20b1d
+  - enabled: 1
     path: Assets/Scenes/MainScene.unity
     guid: 3ca06404f61d3463aa23521a9de4f0a3
   m_configObjects: {}
